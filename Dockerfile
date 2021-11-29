@@ -3,6 +3,9 @@ FROM node:14.8.0-stretch
 RUN mkdir -p /usr/src/app && \
     chown node:node /usr/src/app
 
+#COPY ./docker-entrypoint-initdb.d/CreateDB.sql /usr/src/app/
+ADD ./docker-entrypoint-initdb.d/CreateDB.sql ./docker-entrypoint-initdb.d/ 
+
 USER node:node
 
 WORKDIR /usr/src/app
@@ -36,9 +39,6 @@ ENV DOCUMENTS=about=./about.md
 EXPOSE ${PORT}
 STOPSIGNAL SIGINT
 ENTRYPOINT [ "bash", "docker-entrypoint.sh" ]
-
-#COPY ./docker-entrypoint-initdb.d/CreateDB.sql /usr/src/app/
-ADD ./docker-entrypoint-initdb.d/CreateDB.sql ./docker-entrypoint-initdb.d/ 
 
 HEALTHCHECK --interval=30s --timeout=30s --start-period=5s \
     --retries=3 CMD [ "curl" , "-f" "localhost:${PORT}", "||", "exit", "1"]
