@@ -3,8 +3,8 @@ FROM node:14.8.0-stretch
 RUN mkdir -p /usr/src/app && \
     chown node:node /usr/src/app
 
-#COPY ./docker-entrypoint-initdb.d/CreateDB.sql /usr/src/app/
-ADD ./docker-entrypoint-initdb.d/CreateDB.sql ./docker-entrypoint-initdb.d/ 
+COPY ./docker-entrypoint-initdb.d/CreateDB.sql /usr/src/app/
+#ADD ./docker-entrypoint-initdb.d/CreateDB.sql ./docker-entrypoint-initdb.d/ 
 
 USER node:node
 
