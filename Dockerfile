@@ -14,9 +14,9 @@ RUN npm install && \
 
 ENV STORAGE_TYPE=postgres \
     STORAGE_HOST=127.0.0.1 \
-    STORAGE_PORT=11211\
+    STORAGE_PORT=5432 \
     STORAGE_EXPIRE_SECONDS=2592000\
-    STORAGE_DB=2 \
+    STORAGE_DB=hastedb \
     STORAGE_USENAME=postgres \
     STORAGE_PASSWORD=postgres 
 
