@@ -10,7 +10,9 @@ WORKDIR /usr/src/app
 COPY --chown=node:node . .
 
 RUN npm install && \
-    npm install pg@4.1.1
+    npm install pg@4.1.1 && \
+    npm install pg-pool
+    
 
 ENV STORAGE_TYPE=postgres \
     STORAGE_HOST=127.0.0.1 \
