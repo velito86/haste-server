@@ -24,7 +24,7 @@ ENV LOGGING_LEVEL=verbose \
     LOGGING_TYPE=Console \
     LOGGING_COLORIZE=true
 
-ENV HOST=0.0.0.0\
+ENV HOST=localhost\
     PORT=7777\
     KEY_LENGTH=10\
     MAX_LENGTH=400000\
