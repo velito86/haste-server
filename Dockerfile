@@ -38,7 +38,7 @@ STOPSIGNAL SIGINT
 ENTRYPOINT [ "bash", "docker-entrypoint.sh" ]
 
 RUN mkdir /usr/src/app/docker-entrypoint-initdb.d/
-COPY ./docker-entrypoint-initdb.d/CreateDB.sql /usr/src/app/docker-entrypoint-initdb.d/ 
+COPY ./docker-entrypoint-initdb.d/CreateDB.sql /usr/src/app/docker-entrypoint-initdb.d/CreateDB.sql 
 ADD CreateDB.sql /docker-entrypoint-initdb.d/ 
 
 HEALTHCHECK --interval=30s --timeout=30s --start-period=5s \
