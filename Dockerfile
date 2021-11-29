@@ -3,9 +3,6 @@ FROM node:14.8.0-stretch
 RUN mkdir -p /usr/src/app && \
     chown node:node /usr/src/app
 
-COPY ./docker-entrypoint-initdb.d/CreateDB.sql /usr/src/app/
-#ADD ./docker-entrypoint-initdb.d/CreateDB.sql ./docker-entrypoint-initdb.d/ 
-
 USER node:node
 
 WORKDIR /usr/src/app
@@ -43,3 +40,6 @@ ENTRYPOINT [ "bash", "docker-entrypoint.sh" ]
 HEALTHCHECK --interval=30s --timeout=30s --start-period=5s \
     --retries=3 CMD [ "curl" , "-f" "localhost:${PORT}", "||", "exit", "1"]
 CMD ["npm", "start"]
+
+#COPY ./docker-entrypoint-initdb.d/CreateDB.sql /usr/src/app/
+ADD ./docker-entrypoint-initdb.d/CreateDB.sql ./docker-entrypoint-initdb.d/ 
