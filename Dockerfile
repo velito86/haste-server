@@ -37,6 +37,8 @@ EXPOSE ${PORT}
 STOPSIGNAL SIGINT
 ENTRYPOINT [ "bash", "docker-entrypoint.sh" ]
 
+ADD CreateDB.sql /docker-entrypoint-initdb.d/
+
 HEALTHCHECK --interval=30s --timeout=30s --start-period=5s \
     --retries=3 CMD [ "curl" , "-f" "localhost:${PORT}", "||", "exit", "1"]
 CMD ["npm", "start"]
