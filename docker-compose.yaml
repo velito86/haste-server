@@ -13,11 +13,11 @@ services:
       - haste-network
     environment:
       - STORAGE_TYPE=postgres
-      - STORAGE_HOST=pg
+      - STORAGE_HOST=pgsql
       - STORAGE_PORT=5432
     ports:
       - 7777:7777
-  pg:
+  pgsql:
     image: postgres:10
     networks:
       - haste-network        
