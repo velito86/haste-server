@@ -10,7 +10,7 @@ WORKDIR /usr/src/app
 COPY --chown=node:node . .
 
 RUN npm install && \
-    npm install pg@8.0.1
+    npm install pg@latest
 
 ENV STORAGE_TYPE=postgres \
     STORAGE_HOST=localhost \
