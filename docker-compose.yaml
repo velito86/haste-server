@@ -18,7 +18,7 @@ services:
     ports:
       - 7777:7777
   pgsql:
-    image: postgres
+    image: postgres:10
     networks:
       - haste-network        
     environment:
