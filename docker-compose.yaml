@@ -1,19 +1,31 @@
 version: '3.0'
+
+networks:
+  haste-network:
+
+volumes:
+    haste-postgres:  
+
 services:
   haste-server:
     build: .
     networks:
-      - db-network
+      - haste-network
     environment:
-      - STORAGE_TYPE=memcached
-      - STORAGE_HOST=memcached
-      - STORAGE_PORT=11211
+      - STORAGE_TYPE=postgres
+      - STORAGE_HOST=pg
+      - STORAGE_PORT=5432
     ports:
       - 7777:7777
-  memcached:
-    image: memcached:latest
+  pg:
+    image: postgres:10
     networks:
-      - db-network
+      - haste-network        
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=hastedb
+    volumes:
+      - haste-postgres:/var/lib/postgresql/data
+      - ./docker-entrypoint-initb.d/CreateDB.sql:/docker-entrypoint-initdb.d/CreateDB.sql:ro
 
-networks:
-  db-network:
