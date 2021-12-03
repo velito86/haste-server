@@ -13,7 +13,7 @@ RUN npm install && \
     npm install pg@latest
 
 ENV STORAGE_TYPE=postgres \
-    STORAGE_HOST=localhost \
+    STORAGE_HOST=mypgsql \
     STORAGE_PORT=5432 \
     STORAGE_EXPIRE_SECONDS=2592000\
     STORAGE_DB=hastedb \
