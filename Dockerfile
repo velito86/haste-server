@@ -12,23 +12,23 @@ COPY --chown=node:node . .
 RUN npm install && \
     npm install pg@latest
 
-ENV STORAGE_TYPE=postgres \
-    STORAGE_HOST=mypgsql \
-    STORAGE_PORT=5432 \
-    STORAGE_EXPIRE_SECONDS=2592000\
-    STORAGE_DB=hastedb \
-    STORAGE_USERNAME=postgres \
-    STORAGE_PASSWORD=postgres 
+ENV STORAGE_TYPE= \
+    STORAGE_HOST= \
+    STORAGE_PORT= \
+    STORAGE_EXPIRE_SECONDS=\
+    STORAGE_DB= \
+    STORAGE_USERNAME= \
+    STORAGE_PASSWORD=
 
 ENV LOGGING_LEVEL=verbose \
     LOGGING_TYPE=Console \
     LOGGING_COLORIZE=true
 
-ENV HOST=0.0.0.0\
-    PORT=7777\
-    KEY_LENGTH=10\
-    MAX_LENGTH=400000\
-    STATIC_MAX_AGE=86400\
+ENV HOST= \
+    PORT= \
+    KEY_LENGTH=10 \
+    MAX_LENGTH=400000 \
+    STATIC_MAX_AGE=86400 \
     RECOMPRESS_STATIC_ASSETS=true
 
 ENV DOCUMENTS=about=./about.md
